@@ -56,6 +56,7 @@ public class TicTacToeGame {
 		int user_pos = sc.nextInt();
 		if (board[user_pos] == ' ') {
 			board[user_pos] = player1;
+			showBoard();
 		} else {
 			System.out.println("The positon is already occupied!! Please try again");
 			userInputPosition();
