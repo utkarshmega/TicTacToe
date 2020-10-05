@@ -77,8 +77,7 @@ public class TicTacToeGame {
 	 * To randomly decide who plays first
 	 */
 	private void whoseTurn() {
-		Random random = new Random();
-		int randomToss = random.nextInt(2);
+		int randomToss = (int) (Math.random() * 10 % 2);
 		int heads = 0;
 		int tails = 1;
 		if (randomToss == heads)
