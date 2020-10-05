@@ -3,8 +3,12 @@ import java.util.*;
 
 public class TicTacToeGame {
 	
-	char board[];
-	void board()
+	private char board[];
+	
+	/** Function to create board
+	 * 
+	 */
+	private void createBoard()
 	{
 		board = new char[10];
 		Arrays.fill(board, ' ');
@@ -12,9 +16,7 @@ public class TicTacToeGame {
 
 	public static void main(String[] args) {
 		
-		TicTacToeGame obj = new TicTacToeGame();
-		obj.board(); 
-
+		TicTacToeGame tic_tac_toe = new TicTacToeGame();
+		tic_tac_toe.createBoard(); 
 	}
-
 }
