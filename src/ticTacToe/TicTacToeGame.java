@@ -32,6 +32,9 @@ public class TicTacToeGame {
 		sc.close();
 	}
 
+	/**
+	 * Showing the board for users to choose their position
+	 */
 	private void showBoard() {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
