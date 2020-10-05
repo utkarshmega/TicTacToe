@@ -15,6 +15,10 @@ public class TicTacToeGame {
 		Arrays.fill(board, ' ');
 		return board;
 	}
+	/**
+	 * Assigning letter to the player
+	 * as per their choice
+	 */
 	private void playerLetter()
 	{
 		Scanner sc = new Scanner(System.in);
@@ -23,7 +27,7 @@ public class TicTacToeGame {
 		if(player1=='x')
 			computer = 'o';
 		else
-			computer = 'x';	
+			computer = 'x';
 		sc.close();
 	}
 
