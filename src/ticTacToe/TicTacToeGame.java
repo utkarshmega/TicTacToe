@@ -31,11 +31,25 @@ public class TicTacToeGame {
 			computer = 'x';
 		sc.close();
 	}
+	
+	private void showBoard()
+	{
+		for(int i=0;i<3;i++)
+		{
+			for(int j=0;j<3;j++)
+			{
+				System.out.print("$ | ");
+			}
+			System.out.println();
+		}
+	
+	}
 
 	public static void main(String[] args) {
 
 		TicTacToeGame tic_tac_toe = new TicTacToeGame();
 		char board[] = tic_tac_toe.createBoard();
 		tic_tac_toe.playerLetter();
+		tic_tac_toe.showBoard();
 	}
 }
