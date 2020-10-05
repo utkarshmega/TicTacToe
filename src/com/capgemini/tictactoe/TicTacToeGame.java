@@ -50,7 +50,7 @@ public class TicTacToeGame {
 	/**
 	 * To validate input of player's move
 	 */
-	private boolean userInputMoveValidate(int inpMove) {
+	private boolean inputMoveValidate(int inpMove) {
 
 		if (inpMove > 0 && inpMove < 10 && board[inpMove] == ' ') {
 			return true;
@@ -65,25 +65,43 @@ public class TicTacToeGame {
 	private void makeMove() {
 		System.out.println("Enter the position number where you want to play the move");
 		int userMoveIndex = sc.nextInt();
-		if (userInputMoveValidate(userMoveIndex)) {
+		if (inputMoveValidate(userMoveIndex)) {
 			board[userMoveIndex] = player;
 			showBoard();
+			
 		} else {
 			System.out.println("Invalid move entered");
+			makeMove();
 		}
+	}
+	
+	private void computerMove()
+	{
+		int computerMoveIndex = (int)(Math.random() * 10 %9) +1;
+		if(inputMoveValidate(computerMoveIndex)) {
+			board[computerMoveIndex] = computer;
+			System.out.println();
+			showBoard();
+		}
+		else
+			computerMove();
 	}
 
 	/**
 	 * To randomly decide who plays first
 	 */
-	private void whoseTurn() {
+	private int whoseTurn() {
 		int randomToss = (int) (Math.random() * 10 % 2);
 		int heads = 0;
 		int tails = 1;
-		if (randomToss == heads)
+		if (randomToss == heads) {
 			System.out.println("Player plays first");
-		else
+			return 1;
+		}
+		else {
 			System.out.println("Computer plays first");
+			return 0;
+		}
 	}
 
 	/**
@@ -127,8 +145,56 @@ public class TicTacToeGame {
 		char board[] = tic_tac_toe.createBoard();
 		tic_tac_toe.playerLetter();
 		tic_tac_toe.showBoard();
-		tic_tac_toe.makeMove();
-		tic_tac_toe.whoseTurn();
-
+		int firstPlayer = tic_tac_toe.whoseTurn();
+		if(firstPlayer == 1) {
+			int flag=-1;
+			for(int i=1;i<=9;i++) {
+				tic_tac_toe.makeMove();
+				boolean playerWins = tic_tac_toe.winningConditions();
+				if(playerWins) {
+					flag=1;
+					break;
+				}
+				tic_tac_toe.computerMove();
+				boolean computerWins = tic_tac_toe.winningConditions();
+				if(computerWins) {
+					flag=0;
+					break;
+				}	
+				
+			}
+			if(flag==1)
+				System.out.println("Player wins");
+			else if(flag==1)
+				System.out.println("Computer wins");
+			else
+				System.out.println("Game Tie");
+		}
+		else {
+			int flag=-1;
+			for(int i=1;i<=9;i++) {
+				tic_tac_toe.computerMove();
+				boolean computerWins = tic_tac_toe.winningConditions();
+				if(computerWins) {
+					flag=0;
+					break;
+				}	
+				tic_tac_toe.makeMove();
+				boolean playerWins = tic_tac_toe.winningConditions();
+				if(playerWins) {
+					flag=1;
+					break;
+				}
+				
+			}
+			if(flag==1)
+				System.out.println("Player wins");
+			else if(flag==1)
+				System.out.println("Computer wins");
+			else
+				System.out.println("Game Tie");
+			
+	
+		}
 	}
 }
