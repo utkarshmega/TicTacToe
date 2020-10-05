@@ -5,7 +5,7 @@ import java.util.*;
 public class TicTacToeGame {
 
 	private char board[];
-	private char player1;
+	private char player;
 	private char computer;
 
 	/**
@@ -24,8 +24,8 @@ public class TicTacToeGame {
 	private void playerLetter() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter X or O as per your choice");
-		player1 = sc.next().charAt(0);
-		if (player1 == 'x')
+		player = sc.next().charAt(0);
+		if (player == 'x')
 			computer = 'o';
 		else
 			computer = 'x';
