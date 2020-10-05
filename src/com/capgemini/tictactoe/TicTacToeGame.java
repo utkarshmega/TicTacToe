@@ -5,7 +5,7 @@ import java.util.*;
 public class TicTacToeGame {
 
 	private char board[];
-	private char player1;
+	private char player;
 	private char computer;
 	private final Scanner sc = new Scanner(System.in);
 
@@ -25,8 +25,8 @@ public class TicTacToeGame {
 	private void playerLetter() {
 
 		System.out.println("Enter X or O as per your choice");
-		player1 = sc.next().charAt(0);
-		if (player1 == 'x')
+		player = sc.next().charAt(0);
+		if (player == 'x')
 			computer = 'o';
 		else
 			computer = 'x';
@@ -66,11 +66,25 @@ public class TicTacToeGame {
 		System.out.println("Enter the position number where you want to play the move");
 		int userMoveIndex = sc.nextInt();
 		if (userInputMoveValidate(userMoveIndex)) {
-			board[userMoveIndex] = player1;
+			board[userMoveIndex] = player;
 			showBoard();
 		} else {
 			System.out.println("Invalid move entered");
 		}
+	}
+
+	/**
+	 * To randomly decide who plays first
+	 */
+	private void whoseTurn() {
+		Random random = new Random();
+		int randomToss = random.nextInt(2);
+		int heads = 0;
+		int tails = 1;
+		if (randomToss == heads)
+			System.out.println("Player plays first");
+		else
+			System.out.println("Computer plays first");
 	}
 
 	public static void main(String[] args) {
@@ -80,5 +94,7 @@ public class TicTacToeGame {
 		tic_tac_toe.playerLetter();
 		tic_tac_toe.showBoard();
 		tic_tac_toe.makeMove();
+		tic_tac_toe.whoseTurn();
+
 	}
 }
