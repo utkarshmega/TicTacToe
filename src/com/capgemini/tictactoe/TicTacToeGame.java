@@ -86,6 +86,41 @@ public class TicTacToeGame {
 			System.out.println("Computer plays first");
 	}
 
+	/**
+	 * Conditions to check the winnings cases
+	 */
+	private boolean winningConditions() {
+		/* Horizontal line validation */
+		if ((board[1] == 'x' && board[2] == 'x' && board[3] == 'x')
+				|| (board[1] == 'o' && board[2] == 'o' && board[3] == 'o'))
+			return true;
+		else if ((board[4] == 'x' && board[5] == 'x' && board[6] == 'x')
+				|| (board[4] == 'o' && board[5] == 'o' && board[6] == 'o'))
+			return true;
+		else if ((board[7] == 'x' && board[8] == 'x' && board[9] == 'x')
+				|| (board[7] == 'o' && board[8] == 'o' && board[9] == 'o'))
+			return true;
+		/* Vertical line validation */
+		else if ((board[1] == 'x' && board[4] == 'x' && board[7] == 'x')
+				|| (board[1] == 'o' && board[4] == 'o' && board[7] == 'o'))
+			return true;
+		else if ((board[2] == 'x' && board[5] == 'x' && board[8] == 'x')
+				|| (board[2] == 'o' && board[5] == 'o' && board[8] == 'o'))
+			return true;
+		else if ((board[3] == 'x' && board[6] == 'x' && board[9] == 'x')
+				|| (board[3] == 'o' && board[6] == 'o' && board[9] == 'o'))
+			return true;
+		/* diagonal validation */
+		else if ((board[1] == 'x' && board[5] == 'x' && board[9] == 'x')
+				|| (board[1] == 'o' && board[5] == 'o' && board[9] == 'o'))
+			return true;
+		else if ((board[7] == 'x' && board[5] == 'x' && board[3] == 'x')
+				|| (board[7] == 'o' && board[5] == 'o' && board[3] == 'o'))
+			return true;
+		else
+			return false;
+	}
+
 	public static void main(String[] args) {
 
 		TicTacToeGame tic_tac_toe = new TicTacToeGame();
