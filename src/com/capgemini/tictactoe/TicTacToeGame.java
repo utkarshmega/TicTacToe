@@ -1,4 +1,4 @@
-package ticTacToe;
+package com.capgemini.tictactoe;
 
 import java.util.*;
 
