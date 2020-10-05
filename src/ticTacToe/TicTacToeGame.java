@@ -31,18 +31,15 @@ public class TicTacToeGame {
 			computer = 'x';
 		sc.close();
 	}
-	
-	private void showBoard()
-	{
-		for(int i=0;i<3;i++)
-		{
-			for(int j=0;j<3;j++)
-			{
-				System.out.print("$ | ");
+
+	private void showBoard() {
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				System.out.print("_ | ");
 			}
 			System.out.println();
 		}
-	
+
 	}
 
 	public static void main(String[] args) {
