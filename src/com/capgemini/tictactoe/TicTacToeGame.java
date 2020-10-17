@@ -216,72 +216,80 @@ public class TicTacToeGame {
 	}
 
 	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
 
 		TicTacToeGame tic_tac_toe = new TicTacToeGame();
 		char board[] = tic_tac_toe.createBoard();
-		tic_tac_toe.playerLetter();
-		tic_tac_toe.showBoard();
-		int firstPlayer = tic_tac_toe.whoseTurn();
-		if (firstPlayer == 1) {
-			int flag = -1;
-			for (int i = 1; i <=4 ; i++) {
-				tic_tac_toe.makeMove();
-				boolean playerWins = tic_tac_toe.winningConditions();
-				if (playerWins) {
-					flag = 1;
-					break;
+		int choice = 1;
+		while(choice != 0) {
+			tic_tac_toe.playerLetter();
+			tic_tac_toe.showBoard();
+			int firstPlayer = tic_tac_toe.whoseTurn();
+			if (firstPlayer == 1) {
+				int flag = -1;
+				for (int i = 1; i <=4 ; i++) {
+					tic_tac_toe.makeMove();
+					boolean playerWins = tic_tac_toe.winningConditions();
+					if (playerWins) {
+						flag = 1;
+						break;
+					}
+					tic_tac_toe.computerMove();
+					boolean computerWins = tic_tac_toe.winningConditions();
+					if (computerWins) {
+						flag = 0;
+						break;
+					}
 				}
-				tic_tac_toe.computerMove();
-				boolean computerWins = tic_tac_toe.winningConditions();
-				if (computerWins) {
-					flag = 0;
-					break;
+				if(flag == -1) {
+					tic_tac_toe.makeMove();
+					boolean playerWins = tic_tac_toe.winningConditions();
+					if (playerWins) {
+						flag = 1;
+					}
 				}
+				if (flag == 1)
+					System.out.println("Player wins");
+				else if (flag == 0)
+					System.out.println("Computer wins");
+				else
+					System.out.println("Game Tie");
+			} else {
+				int flag = -1;
+				for (int i = 1; i <= 4; i++) {
+					tic_tac_toe.computerMove();
+					boolean computerWins = tic_tac_toe.winningConditions();
+					if (computerWins) {
+						flag = 0;
+						break;
+					}
+					tic_tac_toe.makeMove();
+					boolean playerWins = tic_tac_toe.winningConditions();
+					if (playerWins) {
+						flag = 1;
+						break;
+					}
+	
+				}
+				if(flag == -1) {
+					tic_tac_toe.computerMove();
+					boolean computerWins = tic_tac_toe.winningConditions();
+					if (computerWins) {
+						flag = 0;
+					}
+				}
+				if (flag == 1)
+					System.out.println("Player wins");
+				else if (flag == 0)
+					System.out.println("Computer wins");
+				else
+					System.out.println("Game Tie");
+	
 			}
-			if(flag == -1) {
-				tic_tac_toe.makeMove();
-				boolean playerWins = tic_tac_toe.winningConditions();
-				if (playerWins) {
-					flag = 1;
-				}
-			}
-			if (flag == 1)
-				System.out.println("Player wins");
-			else if (flag == 0)
-				System.out.println("Computer wins");
-			else
-				System.out.println("Game Tie");
-		} else {
-			int flag = -1;
-			for (int i = 1; i <= 4; i++) {
-				tic_tac_toe.computerMove();
-				boolean computerWins = tic_tac_toe.winningConditions();
-				if (computerWins) {
-					flag = 0;
-					break;
-				}
-				tic_tac_toe.makeMove();
-				boolean playerWins = tic_tac_toe.winningConditions();
-				if (playerWins) {
-					flag = 1;
-					break;
-				}
-
-			}
-			if(flag == -1) {
-				tic_tac_toe.computerMove();
-				boolean computerWins = tic_tac_toe.winningConditions();
-				if (computerWins) {
-					flag = 0;
-				}
-			}
-			if (flag == 1)
-				System.out.println("Player wins");
-			else if (flag == 0)
-				System.out.println("Computer wins");
-			else
-				System.out.println("Game Tie");
-
+			System.out.println("Enter 1 to play more or 0 to quit");
+			choice = sc.nextInt();
 		}
+		sc.close();
 	}
 }
