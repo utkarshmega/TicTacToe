@@ -118,7 +118,7 @@ public class TicTacToeGame {
 	/**
 	 * to find the available corner position
 	 */
-	private int takeCornerMove() {
+	private int takeCornerMoveOrCenter() {
 		if(inputMoveValidate(1))
 			return 1;
 		if(inputMoveValidate(3))
@@ -127,6 +127,8 @@ public class TicTacToeGame {
 			return 7;
 		if(inputMoveValidate(9))
 			return 9;
+		if(inputMoveValidate(5))    // If the above corner moves then it will flow will 
+			return 5;				// reach here and will find the center positon
 		return 0;
 	}
 
@@ -137,7 +139,7 @@ public class TicTacToeGame {
 		
 		int computerMoveIndex = blockingMove();
 		if(computerMoveIndex == 0) {
-			computerMoveIndex = takeCornerMove();
+			computerMoveIndex = takeCornerMoveOrCenter();
 			if(computerMoveIndex == 0) {
 				computerMoveIndex = (int) (Math.random() * 10 % 9) + 1;
 				if (inputMoveValidate(computerMoveIndex)) {
