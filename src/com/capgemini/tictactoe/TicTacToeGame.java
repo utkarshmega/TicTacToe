@@ -114,6 +114,21 @@ public class TicTacToeGame {
 		return 0;
 
 	}
+	
+	/**
+	 * to find the available corner position
+	 */
+	private int takeCornerMove() {
+		if(inputMoveValidate(1))
+			return 1;
+		if(inputMoveValidate(3))
+			return 3;
+		if(inputMoveValidate(7))
+			return 7;
+		if(inputMoveValidate(9))
+			return 9;
+		return 0;
+	}
 
 	/**
 	 *  to find the blocking computer move 
@@ -122,14 +137,22 @@ public class TicTacToeGame {
 		
 		int computerMoveIndex = blockingMove();
 		if(computerMoveIndex == 0) {
-			computerMoveIndex = (int) (Math.random() * 10 % 9) + 1;
-			if (inputMoveValidate(computerMoveIndex)) {
+			computerMoveIndex = takeCornerMove();
+			if(computerMoveIndex == 0) {
+				computerMoveIndex = (int) (Math.random() * 10 % 9) + 1;
+				if (inputMoveValidate(computerMoveIndex)) {
+					board[computerMoveIndex] = computer;
+					System.out.println();
+					showBoard();
+				}	
+				else
+					computerMove();
+			}
+			else {
 				board[computerMoveIndex] = computer;
 				System.out.println();
 				showBoard();
 			}
-			else
-				computerMove();
 		}
 		else
 		{
