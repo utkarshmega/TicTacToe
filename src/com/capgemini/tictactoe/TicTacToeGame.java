@@ -137,7 +137,7 @@ public class TicTacToeGame {
 	 */
 	private void computerMove() {
 		
-		int computerMoveIndex = blockingMove();
+		int computerMoveIndex = blockingMove(); 
 		if(computerMoveIndex == 0) {
 			computerMoveIndex = takeCornerMoveOrCenter();
 			if(computerMoveIndex == 0) {
